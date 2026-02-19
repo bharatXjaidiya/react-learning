@@ -1,0 +1,23 @@
+@import "tailwindcss";
+body,html{
+  background-color: black;
+}
+
+
+/* width */
+.cardContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* track */
+.cardContainer::-webkit-scrollbar-track {
+  background: #0f172a; /* dark slate */
+  border-radius: 10px;
+}
+
+/* thumb */
+.cardContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, black, crimson);
+  border-radius: 0px;
+}
+
