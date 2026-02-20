@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Card = ({ user }) => {
+const Card = ({ user,allUsers,deleteHandler,idx}) => {
+
   return (
     <div
       className="p-5 h-90 bg-center bg-cover rounded-xl
@@ -9,6 +10,9 @@ const Card = ({ user }) => {
     >
         <h1 className='text-xl text-[crimson] font-bold'>{user.name}</h1>
         <p className='text-xl text-[crimson] font-bold'>{user.email}</p>
+        <p onClick={()=>{
+          deleteHandler(idx)
+        }} className='bg-[crimson] cursor-pointer active:scale-95 rounded px-3 py-1 font-bold' >delete</p>
     </div>
   )
 }

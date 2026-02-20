@@ -2,21 +2,20 @@ import React, { useState } from 'react'
 import Navbar from './component/Navbar.jsx'
 import Card from './component/Card.jsx'
 const App = () => {
-
-  const [allUsers, setAllUsers] = useState([{
-    name: "Bharat",
-    email: "jaidiya@bharat.com",
-    url: "https://i.pinimg.com/736x/88/ed/bd/88edbdbec8cac06a7032c5d6f56cf9a4.jpg"
-  }])
-
+  
+  const localData = JSON.parse(localStorage.getItem('allUsers'))||[];
+  
+  const [allUsers, setAllUsers] = useState(localData)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [url, setUrl] = useState("");
-
+  const [url, setUrl] = useState("");                                                                                                                                 
   function submitHandler(e) {
     e.preventDefault();
     let newUser = {name,email,url };
-    setAllUsers([...allUsers,newUser]);
+    let oldUsers = [...allUsers];
+    oldUsers.push(newUser);
+    setAllUsers(oldUsers);
+    localStorage.setItem('allUsers',JSON.stringify(oldUsers));
     setName('');
     setEmail('');
     setUrl('');
@@ -33,13 +32,20 @@ const App = () => {
       setUrl(e.target.value)
     }
   }
-
+  function deleteHandler(idx){
+    console.log(idx)
+    let copyUsers = [...allUsers];
+    copyUsers.splice(1,idx);
+    if(idx === 0) copyUsers.pop();
+    setAllUsers(copyUsers);
+    localStorage.setItem('allUsers',JSON.stringify(copyUsers))
+  }
   return (
     <div>
       <Navbar />
       <div className="cardContainer w-full p-5 flex gap-1 overflow-scroll">
         {allUsers.map((e,idx) => {
-          return <Card key={idx} user={allUsers[idx]} />
+          return <Card key={idx} user={e} deleteHandler ={deleteHandler} idx={idx} />
         })}
       </div>
       <form onSubmit={(e) => {
