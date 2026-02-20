@@ -17,6 +17,9 @@ const App = () => {
     e.preventDefault();
     let newUser = {name,email,url };
     setAllUsers([...allUsers,newUser]);
+    setName('');
+    setEmail('');
+    setUrl('');
   }
 
   function changeHandler(e) {
@@ -42,9 +45,9 @@ const App = () => {
       <form onSubmit={(e) => {
         submitHandler(e);
       }} className='flex flex-col justify-center items-center gap-3 w-fit mx-auto p-5 rounded-2xl'>
-        <input onChange={(e) => { changeHandler(e) }} name='name' className='text-[crimson] font-bold px-7 py-3 border-none outline-2 outline-[crimson] rounded-2xl' placeholder='Name' type="text" />
-        <input onChange={(e) => { changeHandler(e) }} name='email' className='text-[crimson] font-bold px-7 py-3 border-none outline-2 outline-[crimson] rounded-2xl' type="email" placeholder='email' />
-        <input onChange={(e) => { changeHandler(e) }} name='url' className='text-[crimson] font-bold px-7 py-3 border-none outline-2 outline-[crimson] rounded-2xl' type="url" placeholder='profil-pic' />
+        <input value={name} onChange={(e) => { changeHandler(e) }} name='name' className='text-[crimson] font-bold px-7 py-3 border-none outline-2 outline-[crimson] rounded-2xl' placeholder='Name' type="text" />
+        <input value={email} onChange={(e) => { changeHandler(e) }} name='email' className='text-[crimson] font-bold px-7 py-3 border-none outline-2 outline-[crimson] rounded-2xl' type="email" placeholder='email' />
+        <input value={url} onChange={(e) => { changeHandler(e) }} name='url' className='text-[crimson] font-bold px-7 py-3 border-none outline-2 outline-[crimson] rounded-2xl' type="url" placeholder='profil-pic' />
         <button className='bg-[crimson] px-7 py-3 font-bold rounded-xl active:scale-95' >Submit</button>
       </form>
     </div>
