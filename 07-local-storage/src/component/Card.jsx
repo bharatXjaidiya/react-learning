@@ -4,8 +4,8 @@ const Card = ({ user,allUsers,deleteHandler,idx}) => {
 
   return (
     <div
-      className="p-5 h-90 bg-center bg-cover rounded-xl
-      flex flex-col justify-end items-center gap-0.5"
+      className="w-72 p-5 h-90 bg-center bg-cover rounded-xl
+      flex flex-col justify-end items-center gap-0.5 shrink-0"
       style={{ backgroundImage: `url(${user.url})` }}
     >
         <h1 className='text-xl text-[crimson] font-bold'>{user.name}</h1>

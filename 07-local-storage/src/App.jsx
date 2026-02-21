@@ -35,15 +35,14 @@ const App = () => {
   function deleteHandler(idx){
     console.log(idx)
     let copyUsers = [...allUsers];
-    copyUsers.splice(1,idx);
-    if(idx === 0) copyUsers.pop();
+    copyUsers.splice(idx,1);
     setAllUsers(copyUsers);
     localStorage.setItem('allUsers',JSON.stringify(copyUsers))
   }
   return (
     <div>
       <Navbar />
-      <div className="cardContainer w-full p-5 flex gap-1 overflow-scroll">
+      <div className="cardContainer p-5 flex gap-1 overflow-scroll">
         {allUsers.map((e,idx) => {
           return <Card key={idx} user={e} deleteHandler ={deleteHandler} idx={idx} />
         })}
